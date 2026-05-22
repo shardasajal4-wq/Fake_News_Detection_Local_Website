@@ -1,0 +1,24 @@
+# Environment
+.env
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+
+# Large datasets
+data/*.csv
+
+# Trained models
+models/trained_models/
+
+# Research outputs
+research_analysis/research_analysis/graphs/
+research_analysis/research_analysis/results/
+
+# OS files
+.DS_Store
+Thumbs.db

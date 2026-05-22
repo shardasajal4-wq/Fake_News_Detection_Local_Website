@@ -1,0 +1,36 @@
+    def load_model(self):
+        import torch
+        import os
+
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.abspath(os.path.join(base_dir, ".."))
+
+        model_path = os.path.join(
+            project_root,
+            "models",
+            "trained_models",
+            "final_model"     # BERT V3
+            #"bert_model_v2"
+        )
+
+        model_path = os.path.abspath(model_path)
+
+        print("Loading model from:", model_path)
+        print("Path exists:", os.path.exists(model_path))
+
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+        self.tokenizer = BertTokenizer.from_pretrained(
+            model_path,
+            local_files_only=True
+        )
+
+        self.model = BertForSequenceClassification.from_pretrained(
+            model_path,
+            local_files_only=True
+        )
+
+        self.model.to(self.device)
+        self.model.eval()
+
+        print("BERT model loaded successfully")
