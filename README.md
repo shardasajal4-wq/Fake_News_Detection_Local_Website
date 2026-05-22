@@ -2,17 +2,18 @@
 
 ## 📌 Overview
 
-This project is an AI-powered **Real-Time Fake News Detection and Recommendation System** that uses a fine-tuned **DistilBERT Transformer model** to classify news articles as **Real**, **Fake**, or **Uncertain** with confidence analysis.
+This project is an AI-powered **Real-Time Fake News Detection and News Recommendation System** that uses a fine-tuned **DistilBERT Transformer model** to classify news articles as **Real**, **Fake**, or **Uncertain** with confidence analysis.
 
-The system automatically fetches live news articles using **NewsAPI**, processes and classifies them using a hybrid decision engine, stores results in **MongoDB**, and recommends similar articles using **TF-IDF cosine similarity**.
+The system automatically fetches live news articles using **NewsAPI**, preprocesses and analyzes them using a hybrid decision engine, stores prediction results in **MongoDB**, and recommends related news articles using **TF-IDF cosine similarity**.
 
 The project also includes:
 
 * ⚡ FastAPI backend APIs
-* 🖥️ Interactive frontend interface
+* 🖥️ Interactive Streamlit frontend
 * 🧠 Intelligent caching and archiving system
-* 📊 Confidence-based prediction logic
-* 📌 Personalized news recommendation module
+* 📊 Confidence-based prediction analysis
+* 📌 Smart recommendation engine
+* 🔗 Read Full Article support
 
 ---
 
@@ -23,22 +24,30 @@ The project also includes:
 * Fetches latest live news using NewsAPI
 * Cleans and preprocesses articles automatically
 * Performs instant fake news detection
+* Displays confidence scores for predictions
+
+---
 
 ## 🤖 Transformer-Based Detection
 
 * Fine-tuned DistilBERT model for text classification
 * Context-aware NLP prediction pipeline
-* High accuracy semantic understanding
+* Semantic understanding of news articles
+* Hybrid decision logic for better reliability
+
+---
 
 ## 🧠 Hybrid Prediction Logic
 
-The system combines:
+The prediction system combines:
 
 * Argmax Classification
 * Confidence Thresholding
 * Probability Difference Analysis
 
-to generate more reliable predictions.
+to generate more robust and reliable predictions.
+
+---
 
 ## 📊 Confidence Scoring
 
@@ -46,41 +55,62 @@ Every prediction includes:
 
 * Prediction label
 * Confidence percentage
-* Decision analysis
+* Prediction visualization
+
+---
 
 ## 🗂️ MongoDB Integration
 
 Stores:
 
-* Live fetched news
-* Prediction history
+* Latest fetched news
+* User prediction history
 * Archived news articles
 * Cached API responses
 
+---
+
 ## ⚡ Smart Caching System
 
-* Reduces repeated API calls
-* Uses cached news for faster response
-* Automatically refreshes stale data
+* Reduces repeated NewsAPI requests
+* Improves response speed
+* Automatically refreshes stale cache data
+
+---
 
 ## 📌 News Recommendation Engine
 
-* Recommends similar articles
+* Suggests similar articles
 * Uses TF-IDF Vectorization
 * Uses Cosine Similarity matching
+* Supports article link redirection
+
+---
+
+## 🔗 Full Article Access
+
+Users can directly open and read the complete news article from:
+
+* Latest News section
+* Recommendations section
+
+---
 
 ## 🌐 REST API Support
 
-Built using FastAPI with fully functional APIs.
+Built using FastAPI with fully functional REST APIs.
 
-## 🖥️ Frontend Dashboard
+---
 
-Interactive frontend for:
+## 🖥️ Interactive Frontend Dashboard
 
-* News checking
+Frontend supports:
+
+* Manual news verification
 * Live news browsing
-* Recommendation viewing
 * Prediction visualization
+* Recommendation system
+* Full article access
 
 ---
 
@@ -89,7 +119,7 @@ Interactive frontend for:
 | Category              | Technologies                      |
 | --------------------- | --------------------------------- |
 | Backend               | FastAPI                           |
-| Frontend              | Streamlit / PyQt (Project UI)     |
+| Frontend              | Streamlit                         |
 | Machine Learning      | DistilBERT, Transformers, PyTorch |
 | NLP                   | NLTK, BeautifulSoup               |
 | Database              | MongoDB                           |
@@ -99,23 +129,27 @@ Interactive frontend for:
 
 ---
 
-# 📂 Updated Project Structure
+# 📂 Project Structure
 
 ```bash
-fake-news-detection-system/
+Fake_News_Detection_Local_Website/
 │
 ├── backend/
 │   ├── main.py
 │   └── news_pipeline.py
 │
-├── models/
-│   ├── model_interface.py
-│   ├── config.json
-│   ├── tokenizer.json
-│   └── tokenizer_config.json
+├── database/
+│   └── mongodb_connection.py
 │
-├── scraper/
-│   └── news_fetcher.py
+├── data/
+│   └── dataset_loader.py
+│
+├── frontend/
+│   ├── app.py
+│   └── assets/
+│
+├── models/
+│   └── model_interface.py
 │
 ├── preprocessing/
 │   └── text_cleaner.py
@@ -123,31 +157,20 @@ fake-news-detection-system/
 ├── recommender/
 │   └── recommendation_engine.py
 │
-├── database/
-│   └── mongodb_connection.py
+├── scraper/
+│   └── news_fetcher.py
 │
 ├── utils/
+│   ├── model_comparison.py
 │   └── time_utils.py
-│
-├── tests/
-│   ├── test_model_interface.py
-│   ├── test_news_pipeline.py
-│   ├── test_dataset_loader.py
-│   ├── test_news_fetcher.py
-│   └── test_mongodb.py
-│
-├── data/
-│   ├── Fake.csv
-│   └── True.csv
-│
-├── frontend/
-│   └── app.py
 │
 ├── notebook/
 │
+├── research_analysis/
+│
 ├── requirements.txt
-├── .env
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
 ---
@@ -155,9 +178,20 @@ fake-news-detection-system/
 # ⚙️ System Workflow
 
 ```text
-NewsAPI → Fetch News → Clean & Preprocess →
-DistilBERT Prediction → Hybrid Decision Engine →
-MongoDB Storage → Recommendation Engine →
+NewsAPI
+   ↓
+Fetch News
+   ↓
+Text Cleaning & Preprocessing
+   ↓
+DistilBERT Prediction
+   ↓
+Hybrid Decision Logic
+   ↓
+MongoDB Storage & Cache
+   ↓
+Recommendation Engine
+   ↓
 Frontend/API Response
 ```
 
@@ -165,7 +199,7 @@ Frontend/API Response
 
 # 🔐 Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the project root directory:
 
 ```env
 NEWS_API_KEY=your_newsapi_key
@@ -179,8 +213,9 @@ MONGO_URI=mongodb://localhost:27017
 ## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/fake-news-detection-system.git
-cd fake-news-detection-system
+git clone https://github.com/shardasajal4-wq/Fake_News_Detection_Local_Website.git
+
+cd Fake_News_Detection_Local_Website
 ```
 
 ---
@@ -190,15 +225,17 @@ cd fake-news-detection-system
 ### Windows
 
 ```bash
-python -m venv venv
-venv\Scripts\activate
+python -m venv .venv
+
+.venv\Scripts\activate
 ```
 
 ### Linux / Mac
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+
+source .venv/bin/activate
 ```
 
 ---
@@ -213,7 +250,7 @@ pip install -r requirements.txt
 
 ## 4️⃣ Start MongoDB
 
-Make sure MongoDB service is running locally.
+Make sure MongoDB is running locally.
 
 ```bash
 mongod
@@ -227,10 +264,16 @@ mongod
 uvicorn backend.main:app --reload
 ```
 
-Backend runs at:
+Backend API runs at:
 
-```bash
+```text
 http://127.0.0.1:8000
+```
+
+API Documentation:
+
+```text
+http://127.0.0.1:8000/docs
 ```
 
 ---
@@ -238,8 +281,13 @@ http://127.0.0.1:8000
 ## 6️⃣ Run Frontend
 
 ```bash
-cd frontend
 streamlit run frontend/app.py
+```
+
+Frontend runs at:
+
+```text
+http://localhost:8501
 ```
 
 ---
@@ -260,8 +308,8 @@ streamlit run frontend/app.py
 
 ```json
 {
-    "prediction": "Real",
-    "confidence": 0.92
+  "prediction": "Real",
+  "confidence": 0.92
 }
 ```
 
@@ -288,7 +336,7 @@ The recommendation module:
 * Stores archived news articles
 * Converts text into TF-IDF vectors
 * Computes cosine similarity
-* Returns top matching articles
+* Returns top matching related articles
 
 ---
 
@@ -304,12 +352,12 @@ The recommendation module:
 
 # 🧪 Testing Modules
 
-The project includes multiple testing files for:
+The project includes testing scripts for:
 
 * Dataset loading
 * MongoDB connection
 * News fetching
-* Pipeline execution
+* News pipeline
 * Model prediction
 
 ---
@@ -321,8 +369,14 @@ The project includes multiple testing files for:
 * ☁️ Cloud deployment
 * 📈 Advanced analytics dashboard
 * 🧠 Improved recommendation algorithms
-* 🔔 Real-time alert system
+* 🔔 Real-time fake news alerts
 * 📰 Source credibility analysis
+
+---
+
+# 📌 Important Note
+
+Large datasets and trained model files are excluded from the GitHub repository due to GitHub file size limitations.
 
 ---
 
@@ -336,4 +390,4 @@ The NorthCap University
 
 # 📜 License
 
-This project is developed for academic and research purposes.
+This project is developed for academic and research purposes only.
